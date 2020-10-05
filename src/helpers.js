@@ -5,8 +5,15 @@ function encryptLetter(oldVal, newVal) {
 	return newVal;
 };
 
-function defineEncryptedLetter(index, arr) {
-	const newIndex = index >= arr.length ? (index % arr.length) : index;
+function defineEncryptedLetter(i, shift, arr) {
+	const index = i + shift;
+	let newIndex;
+	if (index < 0) {
+		newIndex = arr.length + index;
+	}
+	else {
+		newIndex = index >= arr.length ? (index % arr.length) : index;
+	}
 	return arr[newIndex];
 };
 

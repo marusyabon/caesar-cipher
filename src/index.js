@@ -1,6 +1,6 @@
 const { program } = require('commander');
 const validate = require('./validate');
-const processInput = require('./processInput');
+const encrypt = require('./encrypt');
 
 program
 	.storeOptionsAsProperties(false)
@@ -13,4 +13,4 @@ program
 program.parse(process.argv);
 const args = program.opts();
 validate(args);
-processInput(args.shift, args.input, args.output);
+encrypt(args);
