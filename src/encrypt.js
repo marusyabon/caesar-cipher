@@ -1,6 +1,6 @@
-const transform = require('./transform');
 const through2 = require('through2');
 const fs = require('fs');
+const transform = require('./transform');
 
 module.exports = function encrypt({shift, input, output, action}) {
 	const writableStream = output

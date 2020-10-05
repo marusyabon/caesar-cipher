@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 function encryptLetter(oldVal, newVal) {
 	if (oldVal === oldVal.toUpperCase()) {
 		return newVal.toUpperCase()
@@ -17,4 +19,11 @@ function defineEncryptedLetter(i, shift, arr) {
 	return arr[newIndex];
 };
 
-module.exports = { encryptLetter, defineEncryptedLetter }
+function checkPath(path) {
+	if (!fs.existsSync(path)) {
+		process.stderr.write(`Such file or directory does't exists: ${path}`);
+		process.exit(1);
+	}
+}
+
+module.exports = { encryptLetter, defineEncryptedLetter, checkPath }

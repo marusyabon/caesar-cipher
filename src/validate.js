@@ -1,4 +1,5 @@
 const { ENCODE, DECODE } = require('./constants');
+const { checkPath } = require('./helpers');
 
 module.exports = function validate(args) {
 	if (![ENCODE, DECODE].includes(args.action)) {
@@ -9,4 +10,10 @@ module.exports = function validate(args) {
 		process.stderr.write('shift must be a number');
 		process.exit(1);
 	};
-}
+	if (args.input) {
+		checkPath(args.input);
+	};
+	if (args.output) {
+		checkPath(args.output);
+	};
+};
