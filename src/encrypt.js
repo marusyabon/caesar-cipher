@@ -4,7 +4,7 @@ const transform = require('./transform');
 
 module.exports = function encrypt({shift, input, output, action}) {
 	const writableStream = output
-		? fs.createWriteStream(output)
+		? fs.createWriteStream(output, { flags: 'a+' })
 		: process.stdout;
 
 	const readableStream = input
