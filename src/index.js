@@ -8,9 +8,11 @@ program
 	.requiredOption('-s, --shift <number>', 'a shift')
 	.option('-i, --input <string>', 'an input file')
 	.option('-o, --output <string>', 'an output file')
-	.requiredOption('-a, --action <string>', 'an action encode/decode');
+	.requiredOption('-a, --action <string>', 'an action encode/decode')
+	.action(() => {
+		const args = program.opts();
+		validate(args);
+		encrypt(args);
+	})
+	.parse(process.argv);
 
-program.parse(process.argv);
-const args = program.opts();
-validate(args);
-encrypt(args);

@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 function encryptLetter(oldVal, newVal) {
 	if (oldVal === oldVal.toUpperCase()) {
@@ -19,9 +20,10 @@ function defineEncryptedLetter(i, shift, arr) {
 	return arr[newIndex];
 };
 
-function checkPath(path) {
-	if (!fs.existsSync(path)) {
-		process.stderr.write(`Such file or directory does't exists: ${path}`);
+function checkPath(input) {
+	const userPath = path.resolve(input);
+	if (!fs.existsSync(userPath)) {
+		process.stderr.write(`Such file or directory does't exists: ${userPath}`);
 		process.exit(1);
 	}
 }

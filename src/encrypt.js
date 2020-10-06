@@ -18,8 +18,12 @@ module.exports = function encrypt({shift, input, output, action}) {
 		return cb(null, data);
 	});
 	
-	readableStream.on('error', function (err) {
-		console.log(err.stack);
+	readableStream.on('error', () => {
+		console.error('Unexpected error');
+	});
+	
+	writableStream.on('error', () => {
+		console.error('Unexpected error');
 	});
 
 	readableStream
